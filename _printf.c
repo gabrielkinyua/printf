@@ -25,26 +25,20 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 				{
-					char c = va_arg(args, int);
-
-					write(1, &c, 1);
+					print_char(args);
 					count++;
 					break;
 				}
 				case 's':
 				{
-					char *s = va_arg(args, char *);
-
-					for (j = 0; s[j] != '\0'; j++)
-					{
-						write(1, &s[j], 1);
+						print_string(args);
 						count++;
 					}
 					break;
 				}
 				case '%':
 				{
-					write(1, "%", 1);
+					print_percent()
 					count++;
 					break;
 				}
