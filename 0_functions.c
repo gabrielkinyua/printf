@@ -12,7 +12,7 @@ void print_char(va_list args)
 void print_string(va_list args, int *count)
 {
 	int i = 0;
-	char *s = va_arg(args, char *);
+	const char *s = (const char *)va_arg(args, char *);
 
 	if (s == NULL)
 	{
