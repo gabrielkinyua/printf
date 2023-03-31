@@ -5,6 +5,7 @@
 void print_char(va_list args)
 {
 	char c = va_arg(args, int);
+
 	write(1, &c, 1);
 }
 
@@ -12,6 +13,7 @@ void print_string(va_list args, int *count)
 {
 	int i = 0;
 	char *s = va_arg(args, char *);
+
 	if (s == NULL)
 	{
 		write(1, "(null)", 6);
@@ -28,5 +30,6 @@ void print_string(va_list args, int *count)
 void print_percent(void)
 {
 	char c = '%';
+
 	write(1, &c, 1);
 }
