@@ -2,13 +2,22 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <string.h>
+
+/**
+ * print_char - prints char
+ * @args: input value
+ */
 void print_char(va_list args)
 {
 	char c = va_arg(args, int);
 
 	write(1, &c, 1);
 }
-
+/**
+ * print_string - prints stirng
+ * @count: input value
+ * @args: input value
+ */
 void print_string(va_list args, int *count)
 {
 	int i = 0;
@@ -26,7 +35,10 @@ void print_string(va_list args, int *count)
 		(*count)++;
 	}
 }
-
+/**
+ * print_percent - prints percent
+ *
+ */
 void print_percent(void)
 {
 	char c = '%';
