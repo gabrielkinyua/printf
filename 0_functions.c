@@ -45,3 +45,20 @@ void print_percent(void)
 
 	write(1, &c, 1);
 }
+/**
+ * print_i_and_d - prints i and d
+ * @id: input value
+ *
+ * Return: string length
+ */
+int print_i_and_d(va_list id)
+{
+	char buff[12];
+	int count = 0;
+
+	count += sprintf(buff, "%d", va_arg(id, int));
+
+	if (!buff[0])
+		return (0);
+	return (write(1, buff, strlen(buff)));
+}
