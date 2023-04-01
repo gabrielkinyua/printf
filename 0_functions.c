@@ -6,17 +6,21 @@
 /**
  * print_char - prints char
  * @args: input value
+ * @count: input value
+ *
  */
-void print_char(va_list args)
+void print_char(va_list args, int *count)
 {
 	char c = va_arg(args, int);
 
 	write(1, &c, 1);
+	(*count)++;
 }
 /**
  * print_string - prints stirng
  * @count: input value
  * @args: input value
+ *
  */
 void print_string(va_list args, int *count)
 {
@@ -37,13 +41,15 @@ void print_string(va_list args, int *count)
 }
 /**
  * print_percent - prints percent
+ *@count: input value
  *
  */
-void print_percent(void)
+void print_percent(int *count)
 {
 	char c = '%';
 
 	write(1, &c, 1);
+	(*count)++;
 }
 /**
  * print_i_and_d - prints i and d

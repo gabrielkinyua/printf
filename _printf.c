@@ -9,8 +9,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i;
-	int count = 0;
+	int i, count = 0;
 	va_list args;
 
 	va_start(args, format);
@@ -21,25 +20,20 @@ int _printf(const char *format, ...)
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			i++;
-			switch (format[i])
+			if (format[i] == 'c')
+				print_char(args, &count);
+			else if (format[i] == 's')
+				print_string(args, &count);
+			else if (format[i] == '%')
+				print_percent(&count);
+			else if (format[i] == 'd')
+				count += print_i_and_d(args);
+			else if (format[i] == 'i')
+				count += print_i_and_d(args);
+			else
 			{
-				case 'c':
-					print_char(args);
-					count++;
-					break;
-				case 's':
-					print_string(args, &count);
-					break;
-				case '%':
-					print_percent();
-					count++;
-					break;
-				case 'd' || 'i':
-					count += print_i_and_d(args);
-					break;
-				default:
-					count += write(1, &format[i - 1], 1);
-					count += write(1, &format[i], 1);
+				count += write(1, &format[i - 1], 1);
+				count += write(1, &format[i], 1);
 			}
 		}
 		else
